@@ -4,15 +4,17 @@ import Image from 'next/image'
 import LayoutWrapper from '../../../components/LayoutWrapper'
 import Link from 'next/link'
 
-interface Props {
-  params: { id: string }
-}
-
 /**
  * Seller Profile Page — responsive seller profile and their product grid
  */
-export default function SellerProfilePage({ params }: Props) {
-  const seller = sellers.find((s) => s.id === params.id)
+export default async function SellerProfilePage({
+  params,
+}: {
+  params: Promise<{ id: string }>
+}) {
+  const { id } = await params // ✅ await params before using
+
+  const seller = sellers.find((s) => s.id === id)
 
   if (!seller) {
     return (
@@ -37,13 +39,17 @@ export default function SellerProfilePage({ params }: Props) {
             className="rounded-full border shadow w-[100px] h-[100px] object-cover"
           />
           <div className="text-center sm:text-left">
-            <h1 className="text-3xl font-bold text-neutral-900 mb-1">{seller.name}</h1>
+            <h1 className="text-3xl font-bold text-neutral-900 mb-1">
+              {seller.name}
+            </h1>
             <p className="text-sm text-neutral-600">{seller.description}</p>
           </div>
         </div>
 
         {/* Product Grid */}
-        <h2 className="text-2xl font-semibold text-neutral-800 mb-6">Products by {seller.name}</h2>
+        <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
+          Products by {seller.name}
+        </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {sellerProducts.map((product) => (
             <Link
@@ -58,7 +64,9 @@ export default function SellerProfilePage({ params }: Props) {
                 height={250}
                 className="rounded-lg mb-3 object-cover w-full h-[200px]"
               />
-              <h3 className="text-lg font-semibold text-neutral-800 mb-1">{product.name}</h3>
+              <h3 className="text-lg font-semibold text-neutral-800 mb-1">
+                {product.name}
+              </h3>
               <p className="text-sm text-brand font-medium">৳ {product.price}</p>
             </Link>
           ))}
@@ -67,6 +75,156 @@ export default function SellerProfilePage({ params }: Props) {
     </LayoutWrapper>
   )
 }
+
+
+// import { sellers } from '../../../data/sellers'
+// import { products } from '../../../data/products'
+// import Image from 'next/image'
+// import LayoutWrapper from '../../../components/LayoutWrapper'
+// import Link from 'next/link'
+
+// /**
+//  * Seller Profile Page — responsive seller profile and their product grid
+//  */
+// export default async function SellerProfilePage({
+//   params,
+// }: {
+//   params: { id: string }
+// }) {
+//   const seller = sellers.find((s) => s.id === params.id)
+
+//   if (!seller) {
+//     return (
+//       <LayoutWrapper>
+//         <div className="p-10 text-center text-lg">Seller not found.</div>
+//       </LayoutWrapper>
+//     )
+//   }
+
+//   const sellerProducts = products.filter((p) => p.sellerId === seller.id)
+
+//   return (
+//     <LayoutWrapper>
+//       <div className="py-10">
+//         {/* Seller Info */}
+//         <div className="flex flex-col sm:flex-row items-center gap-6 mb-10">
+//           <Image
+//             src={seller.logo}
+//             alt={seller.name}
+//             width={120}
+//             height={120}
+//             className="rounded-full border shadow w-[100px] h-[100px] object-cover"
+//           />
+//           <div className="text-center sm:text-left">
+//             <h1 className="text-3xl font-bold text-neutral-900 mb-1">
+//               {seller.name}
+//             </h1>
+//             <p className="text-sm text-neutral-600">{seller.description}</p>
+//           </div>
+//         </div>
+
+//         {/* Product Grid */}
+//         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">
+//           Products by {seller.name}
+//         </h2>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+//           {sellerProducts.map((product) => (
+//             <Link
+//               href={`/product/${product.id}`}
+//               key={product.id}
+//               className="bg-white border p-4 rounded-xl shadow hover:shadow-md transition block"
+//             >
+//               <Image
+//                 src={product.image}
+//                 alt={product.name}
+//                 width={400}
+//                 height={250}
+//                 className="rounded-lg mb-3 object-cover w-full h-[200px]"
+//               />
+//               <h3 className="text-lg font-semibold text-neutral-800 mb-1">
+//                 {product.name}
+//               </h3>
+//               <p className="text-sm text-brand font-medium">
+//                 ৳ {product.price}
+//               </p>
+//             </Link>
+//           ))}
+//         </div>
+//       </div>
+//     </LayoutWrapper>
+//   )
+// }
+
+
+// import { sellers } from '../../../data/sellers'
+// import { products } from '../../../data/products'
+// import Image from 'next/image'
+// import LayoutWrapper from '../../../components/LayoutWrapper'
+// import Link from 'next/link'
+
+// interface Props {
+//   params: { id: string }
+// }
+
+// /**
+//  * Seller Profile Page — responsive seller profile and their product grid
+//  */
+// export default function SellerProfilePage({ params }: Props) {
+//   const seller = sellers.find((s) => s.id === params.id)
+
+//   if (!seller) {
+//     return (
+//       <LayoutWrapper>
+//         <div className="p-10 text-center text-lg">Seller not found.</div>
+//       </LayoutWrapper>
+//     )
+//   }
+
+//   const sellerProducts = products.filter((p) => p.sellerId === seller.id)
+
+//   return (
+//     <LayoutWrapper>
+//       <div className="py-10">
+//         {/* Seller Info */}
+//         <div className="flex flex-col sm:flex-row items-center gap-6 mb-10">
+//           <Image
+//             src={seller.logo}
+//             alt={seller.name}
+//             width={120}
+//             height={120}
+//             className="rounded-full border shadow w-[100px] h-[100px] object-cover"
+//           />
+//           <div className="text-center sm:text-left">
+//             <h1 className="text-3xl font-bold text-neutral-900 mb-1">{seller.name}</h1>
+//             <p className="text-sm text-neutral-600">{seller.description}</p>
+//           </div>
+//         </div>
+
+//         {/* Product Grid */}
+//         <h2 className="text-2xl font-semibold text-neutral-800 mb-6">Products by {seller.name}</h2>
+//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+//           {sellerProducts.map((product) => (
+//             <Link
+//               href={`/product/${product.id}`}
+//               key={product.id}
+//               className="bg-white border p-4 rounded-xl shadow hover:shadow-md transition block"
+//             >
+//               <Image
+//                 src={product.image}
+//                 alt={product.name}
+//                 width={400}
+//                 height={250}
+//                 className="rounded-lg mb-3 object-cover w-full h-[200px]"
+//               />
+//               <h3 className="text-lg font-semibold text-neutral-800 mb-1">{product.name}</h3>
+//               <p className="text-sm text-brand font-medium">৳ {product.price}</p>
+//             </Link>
+//           ))}
+//         </div>
+//       </div>
+//     </LayoutWrapper>
+//   )
+// }
 
 // import { sellers } from '../../../data/sellers'
 // import { products } from '../../../data/products'
