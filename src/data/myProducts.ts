@@ -1,0 +1,17 @@
+export const myProducts = [
+  { id: '1', name: 'Classic Leather Wallet', price: 1200, image: '/images/wallet.jpeg' },
+  { id: '2', name: 'Black Leather Belt', price: 1800, image: '/images/belt.jpeg' },
+  { id: '3', name: 'Brown Leather Bag', price: 4500, image: '/images/bag.jpeg' },
+  { id: '4', name: 'Minimalist Card Holder', price: 850, image: '/images/cardholder.jpeg' },
+  { id: '5', name: 'Vintage Leather Journal', price: 2200, image: '/images/journal.jpeg' },
+  { id: '6', name: 'Classic Keychain', price: 300, image: '/images/keychain.jpeg' },
+  { id: '7', name: 'Leather Sandals', price: 3200, image: '/images/sandals.jpeg' },
+  { id: '8', name: 'Laptop Sleeve', price: 3800, image: '/images/laptop-sleeve.jpeg' },
+  { id: '9', name: 'Slim Leather Briefcase', price: 5200, image: '/images/briefcase.jpeg' },
+  { id: '10', name: 'Folded Passport Holder', price: 1600, image: '/images/passport.jpeg' },
+  { id: '11', name: 'Toiletry Travel Bag', price: 2700, image: '/images/toiletry.jpeg' },
+  { id: '12', name: 'Rustic Belt – Brown', price: 1900, image: '/images/belt2.jpeg' },
+  { id: '13', name: 'Leather Gloves', price: 2500, image: '/images/gloves.jpeg' },
+  { id: '14', name: 'Shoulder Handbag', price: 4100, image: '/images/handbag.jpeg' },
+  { id: '15', name: 'Messenger Crossbody Bag', price: 4300, image: '/images/crossbody.jpeg' },
+]

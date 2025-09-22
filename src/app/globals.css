@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Base font and page appearance */
+body {
+  @apply bg-[#f7f8fa] text-neutral-900 font-sans antialiased leading-relaxed;
+}
+
+/* Headings — clean and consistent */
+h1, h2, h3, h4 {
+  @apply font-semibold text-neutral-800;
+}
+
+h1 {
+  @apply text-3xl md:text-4xl lg:text-5xl;
+}
+
+h2 {
+  @apply text-2xl md:text-3xl;
+}
+
+h3 {
+  @apply text-xl md:text-2xl;
+}
+
+/* Paragraphs and text */
+p {
+  @apply text-base text-neutral-700 leading-relaxed;
+}
+
+/* Buttons */
+button {
+  @apply transition-colors duration-200 ease-in-out;
+}
+
+/* Links */
+a {
+  @apply text-blue-600 hover:text-blue-700 transition duration-200;
+}
+
+/* Images */
+img {
+  @apply rounded-md shadow-sm;
+}
+
+/* Card base styling */
+.card {
+  @apply bg-white border border-neutral-200 rounded-xl shadow hover:shadow-md transition p-4;
+}
+
+/* Input fields */
+input, textarea, select {
+  @apply w-full border border-neutral-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+}
+
+/* Utility containers */
+.container {
+  @apply max-w-7xl mx-auto px-6;
+}
+
+
+
+/* @import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
