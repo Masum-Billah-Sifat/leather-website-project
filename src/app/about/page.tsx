@@ -23,7 +23,7 @@ export default function AboutPage() {
         {/* Image + Text */}
         <div className="grid md:grid-cols-2 gap-10 items-center">
           <Image
-            src="/images/about.jpg"
+            src="/images/about.jpeg"
             alt="Hazaribagh Leather"
             width={600}
             height={400}
